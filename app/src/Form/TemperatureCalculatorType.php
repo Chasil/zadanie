@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Weather;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,8 +15,7 @@ class TemperatureCalculatorType extends AbstractType
         $builder
             ->add('city')
             ->add('country')
-            ->add('averageTemperature')
-            ->add('added')
+            ->add('averageTemperature', TextType::class, array('required' => false))
         ;
     }
 
