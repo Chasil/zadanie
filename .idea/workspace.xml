@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d2a5add-df6e-432a-9980-79d68f141ed7" name="Changes" comment="add frontend controller, form and database">
-      <change afterPath="$PROJECT_DIR$/app/public/assets/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/public/assets/css/bootstrap.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/public/assets/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/public/assets/js/bootstrap.min.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/public/assets/js/popper.min.js" afterDir="false" />
+    <list default="true" id="1d2a5add-df6e-432a-9980-79d68f141ed7" name="Changes" comment="add frontend scripts, form handling">
+      <change afterPath="$PROJECT_DIR$/app/src/Api/ApiClient.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/Exception/AddressFailException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/Exception/WeatherMissingException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/Service/CoordinateFetcher.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/Controller/HomepageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Controller/HomepageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Form/TemperatureCalculatorType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Form/TemperatureCalculatorType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/homepage/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/homepage/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,6 +29,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\xampp\php\php.exe" />
   <component name="ProjectId" id="2SSoereLVRPfHOV8Wi5LGKVatSr" />
@@ -71,7 +72,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1689149441689</updated>
-      <workItem from="1689149442746" duration="6603000" />
+      <workItem from="1689149442746" duration="13849000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1689151410007</created>
@@ -87,7 +88,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689153379239</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add frontend scripts, form handling">
+      <created>1689156606180</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1689156606180</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -108,6 +116,7 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="init" />
     <MESSAGE value="add frontend controller, form and database" />
-    <option name="LAST_COMMIT_MESSAGE" value="add frontend controller, form and database" />
+    <MESSAGE value="add frontend scripts, form handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="add frontend scripts, form handling" />
   </component>
 </project>
