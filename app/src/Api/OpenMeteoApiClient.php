@@ -3,17 +3,22 @@
 namespace App\Api;
 
 use App\Exception\WeatherMissingException;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class ApiClient
+class OpenMeteoApiClient extends AbstractController
 {
-    private const DOMAIN_NAME = 'https://api.openweathermap.org/data/2.5/weather';
+    private const OPEN_METEO_DOMAIN_NAME = 'https://api.open-meteo.com/v1/forecast';
 
-    public function __construct(private readonly HttpClientInterface $httpClient) {}
+    public function __construct(
+        private readonly HttpClientInterface $httpClient,
+        private SerializerInterface $serializer
+    ) {}
 
     /**
      * @throws TransportExceptionInterface
@@ -22,16 +27,16 @@ class ApiClient
      * @throws ClientExceptionInterface
      * @throws WeatherMissingException
      */
-    public function fetchAPIInformation(string $lon, string $lat): string
+    public function fetchOpenMeteoAPIInformation(string $longitude, string $latitude): float
     {
         $response = $this->httpClient->request(
             'GET',
-            self::DOMAIN_NAME,
+            self::OPEN_METEO_DOMAIN_NAME,
             [
                 'query' => [
-                    'lat' => $lat,
-                    'lon' => $lon,
-                    'appid' => '197837dbbbf1618b58c9b2fb4d0b2ede'
+                    'latitude' => $latitude,
+                    'longitude' => $longitude,
+                    'current_weather' => 'true'
                 ]
             ]
         );
@@ -40,6 +45,9 @@ class ApiClient
             throw new WeatherMissingException();
         }
 
-        return $response->getContent();
+        $responseContent = $response->getContent();
+        $weatherData = json_decode($responseContent);
+
+        return ['temperature' => $weatherData->current_weather->temperature];
     }
 }

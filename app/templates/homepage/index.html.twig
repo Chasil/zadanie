@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomepageController!{% endblock %}
+{% block title %}Weater Information{% endblock %}
 
 {% block body %}
     <div class="container">
@@ -11,9 +11,9 @@
                     <div class="d-flex flex-column mb-4">
                         <h1 class="text-center mb-4 h4">Pass city and country to see average temperature.</h1>
                         {{  form_start(form, {'attr': {'class': 'd-flex flex-column mb-4'}}) }}
-                        {{ form_row(form.city) }}
-                        {{ form_row(form.country) }}
-                        <input type="submit" value="Check" class="form-control btn btn-success w-50 align-self-center" />
+                            {{ form_row(form.city) }}
+                            {{ form_row(form.country) }}
+                            <input type="submit" value="Check" class="form-control btn btn-success w-50 align-self-center" />
                         {{ form_end(form) }}
 
                         {% for message in app.flashes('notice') %}
