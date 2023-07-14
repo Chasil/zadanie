@@ -3,6 +3,8 @@
 namespace App\Api;
 
 use App\Exception\WeatherMissingException;
+use App\Serializer\OpenMeteoApiResponse;
+use App\Serializer\OpenMeteoApiResponseWeather;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
@@ -27,7 +29,7 @@ class OpenMeteoApiClient extends AbstractController
      * @throws ClientExceptionInterface
      * @throws WeatherMissingException
      */
-    public function fetchOpenMeteoAPIInformation(string $longitude, string $latitude): float
+    public function fetchOpenMeteoAPIInformation(string $longitude, string $latitude): OpenMeteoApiResponse
     {
         $response = $this->httpClient->request(
             'GET',
@@ -46,8 +48,7 @@ class OpenMeteoApiClient extends AbstractController
         }
 
         $responseContent = $response->getContent();
-        $weatherData = json_decode($responseContent);
 
-        return ['temperature' => $weatherData->current_weather->temperature];
+        return $this->serializer->deserialize($responseContent, OpenMeteoApiResponse::class, 'json');
     }
 }

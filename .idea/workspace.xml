@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d2a5add-df6e-432a-9980-79d68f141ed7" name="Changes" comment="add frontend scripts, form handling">
-      <change afterPath="$PROJECT_DIR$/app/src/Api/OpenMeteoApiClient.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/Service/WeatherParametersConverter.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/Service/WeatherSaver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="1d2a5add-df6e-432a-9980-79d68f141ed7" name="Changes" comment="add services">
+      <change afterPath="$PROJECT_DIR$/app/src/Serializer/OpenMeteoApiResponse.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/Serializer/OpenMeteoApiResponseWeather.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Api/ApiClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Api/OpenWeatherApiClient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/Api/OpenMeteoApiClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Api/OpenMeteoApiClient.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/Controller/HomepageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Controller/HomepageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Form/TemperatureCalculatorType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Form/TemperatureCalculatorType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Service/CoordinateFetcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Service/CoordinateFetcher.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/homepage/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/homepage/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,7 +205,7 @@
       <option name="presentableId" value="Default" />
       <updated>1689149441689</updated>
       <workItem from="1689149442746" duration="13849000" />
-      <workItem from="1689229522600" duration="10131000" />
+      <workItem from="1689229522600" duration="16353000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1689151410007</created>
@@ -232,7 +228,28 @@
       <option name="project" value="LOCAL" />
       <updated>1689156606180</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add form validation">
+      <created>1689327014962</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1689327014962</updated>
+    </task>
+    <task id="LOCAL-00005" summary="code reformat">
+      <created>1689327057260</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1689327057260</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add services">
+      <created>1689327073714</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1689327073714</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,6 +271,9 @@
     <MESSAGE value="init" />
     <MESSAGE value="add frontend controller, form and database" />
     <MESSAGE value="add frontend scripts, form handling" />
-    <option name="LAST_COMMIT_MESSAGE" value="add frontend scripts, form handling" />
+    <MESSAGE value="add form validation" />
+    <MESSAGE value="code reformat" />
+    <MESSAGE value="add services" />
+    <option name="LAST_COMMIT_MESSAGE" value="add services" />
   </component>
 </project>
