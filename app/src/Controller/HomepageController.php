@@ -55,8 +55,8 @@ class HomepageController extends AbstractController
             $openMeteoData = $openMeteoApiClient->fetchOpenMeteoAPIInformation($coordinates['latitude'], $coordinates['longitude']);
 
             $averageTemperature = $parametersConverter->getAverageTemperature([
-                $parametersConverter->kalvinToCelsius($openWeatherData->main->temp),
-                $openMeteoData->getCurrentWeather()->getTemperature()
+                $parametersConverter->kalvinToCelsius($openWeatherData->getTemperature()),
+                $openMeteoData->getTemperature()
             ]);
 
             $weatherSaver->save($city, $country, $averageTemperature);

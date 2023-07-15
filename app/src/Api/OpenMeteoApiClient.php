@@ -4,7 +4,6 @@ namespace App\Api;
 
 use App\Exception\WeatherMissingException;
 use App\Serializer\OpenMeteoApiResponse;
-use App\Serializer\OpenMeteoApiResponseWeather;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
