@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Serializer;
+namespace App\Api\OpenWeather\Response;
+
+use App\Api\ApiResponse;
 
 class OpenWeatherApiResponse implements ApiResponse
 {

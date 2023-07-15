@@ -9,6 +9,12 @@ readonly class WeatherSaver
 {
     public function __construct(private ManagerRegistry $doctrine) {}
 
+    /**
+     * @param string $city
+     * @param string $country
+     * @param float $averageTemperature
+     * @return void
+     */
     public function save(string $city, string $country, float $averageTemperature): void
     {
         $entityWeather = new Weather();

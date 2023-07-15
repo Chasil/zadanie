@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Api;
+namespace App\Api\OpenWeather;
 
+use App\Api\ApiClients;
+use App\Api\OpenWeather\Response\OpenWeatherApiResponse;
 use App\Exception\WeatherMissingException;
-use App\Serializer\OpenMeteoApiResponse;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
@@ -12,9 +12,9 @@ use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class OpenMeteoApiClient extends AbstractController
+class OpenWeatherApiClient implements ApiClients
 {
-    private const OPEN_METEO_DOMAIN_NAME = 'https://api.open-meteo.com/v1/forecast';
+    private const OPEN_WEATHER_DOMAIN_NAME = 'https://api.openweathermap.org/data/2.5/weather';
 
     public function __construct(
         private readonly HttpClientInterface $httpClient,
@@ -28,16 +28,16 @@ class OpenMeteoApiClient extends AbstractController
      * @throws ClientExceptionInterface
      * @throws WeatherMissingException
      */
-    public function fetchOpenMeteoAPIInformation(string $longitude, string $latitude): OpenMeteoApiResponse
+    public function fetchAPIInformation(string $longitude, string $latitude): OpenWeatherApiResponse
     {
         $response = $this->httpClient->request(
             'GET',
-            self::OPEN_METEO_DOMAIN_NAME,
+            self::OPEN_WEATHER_DOMAIN_NAME,
             [
                 'query' => [
-                    'latitude' => $latitude,
-                    'longitude' => $longitude,
-                    'current_weather' => 'true'
+                    'lat' => $latitude,
+                    'lon' => $longitude,
+                    'appid' => '197837dbbbf1618b58c9b2fb4d0b2ede'
                 ]
             ]
         );
@@ -48,6 +48,6 @@ class OpenMeteoApiClient extends AbstractController
 
         $responseContent = $response->getContent();
 
-        return $this->serializer->deserialize($responseContent, OpenMeteoApiResponse::class, 'json');
+        return $this->serializer->deserialize($responseContent, OpenWeatherApiResponse::class, 'json');
     }
 }

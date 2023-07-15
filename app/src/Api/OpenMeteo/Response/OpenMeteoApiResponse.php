@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Serializer;
+namespace App\Api\OpenMeteo\Response;
 
+use App\Api\ApiResponse;
 use Symfony\Component\Serializer\Annotation\SerializedName;
 
 class OpenMeteoApiResponse implements ApiResponse

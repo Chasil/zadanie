@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Serializer;
+namespace App\Api\OpenWeather\Response;
+
+use App\Api\WeatherParametersConverterTrait;
 
 class OpenWeatherApiResponseMain
 {
+    use WeatherParametersConverterTrait;
     private float $temp;
 
     /**
@@ -19,7 +22,7 @@ class OpenWeatherApiResponseMain
      */
     public function setTemp(float $temp): void
     {
-        $this->temp = $temp;
+        $this->temp = $this->kalvinToCelsius($temp);
     }
 
 
