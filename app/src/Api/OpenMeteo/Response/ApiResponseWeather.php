@@ -2,7 +2,7 @@
 
 namespace App\Api\OpenMeteo\Response;
 
-class OpenMeteoApiResponseWeather
+class ApiResponseWeather
 {
     private float $temperature;
 

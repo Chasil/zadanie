@@ -4,7 +4,7 @@ namespace App\Api\OpenWeather\Response;
 
 use App\Api\ConvertToCelsiusTrait;
 
-class OpenWeatherApiResponseMain
+class ApiResponseMain
 {
     use ConvertToCelsiusTrait;
     private float $temp;

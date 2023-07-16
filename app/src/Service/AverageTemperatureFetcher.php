@@ -2,16 +2,15 @@
 
 namespace App\Service;
 
-use App\Api\OpenMeteo\OpenMeteoApiClient;
-use App\Api\OpenWeather\OpenWeatherApiClient;
+use App\Api\OpenMeteo\ApiClient;
 
 class AverageTemperatureFetcher
 {
     private array $apiClientsList;
 
     public function __construct(
-        private OpenWeatherApiClient $openWeatherApiClient,
-        private OpenMeteoApiClient $openMeteoApiClient
+        private ApiClient $openWeatherApiClient,
+        private ApiClient $openMeteoApiClient
     )
     {
         $this->apiClientsList = [

@@ -2,26 +2,25 @@
 
 namespace App\Api\OpenMeteo\Response;
 
-use App\Api\ApiResponse;
 use Symfony\Component\Serializer\Annotation\SerializedName;
 
-class OpenMeteoApiResponse implements ApiResponse
+class ApiResponse implements \App\Api\ApiResponse
 {
     #[SerializedName('current_weather')]
-    private OpenMeteoApiResponseWeather $currentWeather;
+    private ApiResponseWeather $currentWeather;
 
     /**
-     * @param OpenMeteoApiResponseWeather $currentWeather
+     * @param ApiResponseWeather $currentWeather
      */
-    public function setCurrentWeather(OpenMeteoApiResponseWeather $currentWeather): void
+    public function setCurrentWeather(ApiResponseWeather $currentWeather): void
     {
         $this->currentWeather = $currentWeather;
     }
 
     /**
-     * @return OpenMeteoApiResponseWeather
+     * @return ApiResponseWeather
      */
-    public function getCurrentWeather(): OpenMeteoApiResponseWeather
+    public function getCurrentWeather(): ApiResponseWeather
     {
         return $this->currentWeather;
     }

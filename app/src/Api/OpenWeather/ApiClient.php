@@ -2,8 +2,7 @@
 
 namespace App\Api\OpenWeather;
 
-use App\Api\ApiClient;
-use App\Api\OpenWeather\Response\OpenWeatherApiResponse;
+use App\Api\OpenWeather\Response\ApiResponse;
 use App\Exception\WeatherMissingException;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
@@ -12,9 +11,9 @@ use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class OpenWeatherApiClient implements ApiClient
+class ApiClient implements \App\Api\ApiClient
 {
-    private const OPEN_WEATHER_DOMAIN_NAME = 'https://api.openweathermap.org/data/2.5/weather';
+    private const DOMAIN_NAME = 'https://api.openweathermap.org/data/2.5/weather';
 
     public function __construct(
         private readonly HttpClientInterface $httpClient,
@@ -28,11 +27,11 @@ class OpenWeatherApiClient implements ApiClient
      * @throws ClientExceptionInterface
      * @throws WeatherMissingException
      */
-    public function fetchInformation(string $longitude, string $latitude): OpenWeatherApiResponse
+    public function fetchInformation(string $longitude, string $latitude): ApiResponse
     {
         $response = $this->httpClient->request(
             'GET',
-            self::OPEN_WEATHER_DOMAIN_NAME,
+            self::DOMAIN_NAME,
             [
                 'query' => [
                     'lat' => $latitude,
@@ -48,6 +47,6 @@ class OpenWeatherApiClient implements ApiClient
 
         $responseContent = $response->getContent();
 
-        return $this->serializer->deserialize($responseContent, OpenWeatherApiResponse::class, 'json');
+        return $this->serializer->deserialize($responseContent, ApiResponse::class, 'json');
     }
 }
