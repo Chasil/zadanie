@@ -25,23 +25,21 @@ class AverageTemperatureFetcher
         ];
     }
 
-    /**
+    /***
      * @param float $latitude
      * @param float $longitude
      * @return float
+     * @throws ClientExceptionInterface
+     * @throws RedirectionExceptionInterface
+     * @throws ServerExceptionInterface
+     * @throws TransportExceptionInterface
+     * @throws WeatherMissingException
      */
     public function fetch(float $latitude, float $longitude): float
     {
         $temperatures = [];
         foreach ($this->apiClientsList as $apiClient) {
-            try {
-                $apiData = $apiClient->fetchInformation($latitude, $longitude);
-            } catch (WeatherMissingException
-            |ClientExceptionInterface|
-            RedirectionExceptionInterface|
-            ServerExceptionInterface|
-            TransportExceptionInterface $e) {
-            }
+            $apiData = $apiClient->fetchInformation($latitude, $longitude);
             $temperatures[] = $apiData->getTemperature();
         }
 
