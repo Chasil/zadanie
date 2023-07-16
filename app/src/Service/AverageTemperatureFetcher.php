@@ -3,9 +3,15 @@
 namespace App\Service;
 
 use App\Api\OpenMeteo\ApiClient;
+use App\Exception\WeatherMissingException;
+use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 class AverageTemperatureFetcher
 {
+    /** @var apiClient[]  */
     private array $apiClientsList;
 
     public function __construct(
@@ -28,8 +34,15 @@ class AverageTemperatureFetcher
     {
         $temperatures = [];
         foreach ($this->apiClientsList as $apiClient) {
-            $apiData = $apiClient->fetchInformation($latitude, $longitude);
-            $temperatures[] = $apiData->getTemperature($latitude, $longitude);
+            try {
+                $apiData = $apiClient->fetchInformation($latitude, $longitude);
+            } catch (WeatherMissingException
+            |ClientExceptionInterface|
+            RedirectionExceptionInterface|
+            ServerExceptionInterface|
+            TransportExceptionInterface $e) {
+            }
+            $temperatures[] = $apiData->getTemperature();
         }
 
         return array_sum($temperatures) / count($temperatures);
