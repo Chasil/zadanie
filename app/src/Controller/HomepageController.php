@@ -6,7 +6,7 @@ use App\Exception\AddressFailException;
 use App\Exception\WeatherMissingException;
 use App\Form\TemperatureCalculatorType;
 use App\Service\CoordinateFetcher;
-use App\Service\AverageTemperatureFetcher;
+use App\Service\TemperatureFetcher;
 use App\Service\WeatherSaver;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,7 +32,7 @@ class HomepageController extends AbstractController
         Request $request,
         CoordinateFetcher   $coordinateFetcher,
         WeatherSaver    $weatherSaver,
-        AverageTemperatureFetcher $averageTemperatureFetcher
+        TemperatureFetcher $averageTemperatureFetcher
         ): Response
     {
         $temperatureCalculatorForm = $this->createForm(TemperatureCalculatorType::class);
@@ -45,7 +45,7 @@ class HomepageController extends AbstractController
 
             $coordinates = $coordinateFetcher->get($city, $country);
 
-            $averageTemperature = $averageTemperatureFetcher->fetch($coordinates['latitude'], $coordinates['longitude']);
+            $averageTemperature = $averageTemperatureFetcher->getAverage($coordinates['latitude'], $coordinates['longitude']);
 
             $weatherSaver->save($city, $country, $averageTemperature);
 

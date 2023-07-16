@@ -9,7 +9,7 @@ use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
-class AverageTemperatureFetcher
+class TemperatureFetcher
 {
     /** @var apiClient[]  */
     private array $apiClientsList;
@@ -35,7 +35,7 @@ class AverageTemperatureFetcher
      * @throws TransportExceptionInterface
      * @throws WeatherMissingException
      */
-    public function fetch(float $latitude, float $longitude): float
+    public function getAverage(float $latitude, float $longitude): float
     {
         $temperatures = [];
         foreach ($this->apiClientsList as $apiClient) {
