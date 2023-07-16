@@ -1,0 +1,9 @@
+.ci-form div label {
+  min-width: 100px;
+  margin: 5px 0;
+}
+.ci-form input[type=submit] {
+  margin-top: 20px;
+}
+
+/*# sourceMappingURL=custom.css.map */
