@@ -2,11 +2,11 @@
 
 namespace App\Api\OpenWeather\Response;
 
-use App\Api\WeatherParametersConverterTrait;
+use App\Api\ConvertToCelsiusTrait;
 
 class OpenWeatherApiResponseMain
 {
-    use WeatherParametersConverterTrait;
+    use ConvertToCelsiusTrait;
     private float $temp;
 
     /**

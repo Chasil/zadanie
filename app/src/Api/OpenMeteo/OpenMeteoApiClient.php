@@ -2,7 +2,7 @@
 
 namespace App\Api\OpenMeteo;
 
-use App\Api\ApiClients;
+use App\Api\ApiClient;
 use App\Api\OpenMeteo\Response\OpenMeteoApiResponse;
 use App\Exception\WeatherMissingException;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -12,7 +12,7 @@ use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class OpenMeteoApiClient implements ApiClients
+class OpenMeteoApiClient implements ApiClient
 {
     private const OPEN_METEO_DOMAIN_NAME = 'https://api.open-meteo.com/v1/forecast';
 
@@ -28,7 +28,7 @@ class OpenMeteoApiClient implements ApiClients
      * @throws ClientExceptionInterface
      * @throws WeatherMissingException
      */
-    public function fetchAPIInformation(string $longitude, string $latitude): OpenMeteoApiResponse
+    public function fetchInformation(string $longitude, string $latitude): OpenMeteoApiResponse
     {
         $response = $this->httpClient->request(
             'GET',

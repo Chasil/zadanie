@@ -2,7 +2,7 @@
 
 namespace App\Api;
 
-trait WeatherParametersConverterTrait
+trait ConvertToCelsiusTrait
 {
     /**
      * @param float $temparature
@@ -20,15 +20,5 @@ trait WeatherParametersConverterTrait
     public function kalvinToCelsius(float $temerature): float
     {
         return $temerature - 273.15;
-    }
-
-    /**
-     * @param array $temperatures
-     * @return float
-     */
-    public function getAverageTemperature(array $temperatures): float
-    {
-
-        return array_sum($temperatures) / count($temperatures);
     }
 }

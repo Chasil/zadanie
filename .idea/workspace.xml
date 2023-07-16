@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d2a5add-df6e-432a-9980-79d68f141ed7" name="Changes" comment="add serializer">
-      <change afterPath="$PROJECT_DIR$/app/src/Serializer/ApiResponse.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/Serializer/OpenWeatherApiResponse.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/Serializer/OpenWeatherApiResponseMain.php" afterDir="false" />
+    <list default="true" id="1d2a5add-df6e-432a-9980-79d68f141ed7" name="Changes" comment="code refactor">
+      <change afterPath="$PROJECT_DIR$/app/src/Service/AverageTemperatureFetcher.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Api/OpenMeteoApiClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Api/OpenMeteoApiClient.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Api/OpenWeatherApiClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Api/OpenWeatherApiClient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/Api/ApiClients.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Api/ApiClient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/Api/OpenMeteo/OpenMeteoApiClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Api/OpenMeteo/OpenMeteoApiClient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/Api/OpenWeather/OpenWeatherApiClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Api/OpenWeather/OpenWeatherApiClient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/Api/OpenWeather/Response/OpenWeatherApiResponseMain.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Api/OpenWeather/Response/OpenWeatherApiResponseMain.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/Api/WeatherParametersConverterTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Api/ConvertToCelsiusTrait.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/Controller/HomepageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Controller/HomepageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Serializer/OpenMeteoApiResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Serializer/OpenMeteoApiResponse.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +208,7 @@
       <option name="presentableId" value="Default" />
       <updated>1689149441689</updated>
       <workItem from="1689149442746" duration="13849000" />
-      <workItem from="1689229522600" duration="19233000" />
+      <workItem from="1689229522600" duration="30882000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1689151410007</created>
@@ -259,7 +259,21 @@
       <option name="project" value="LOCAL" />
       <updated>1689336719894</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="add serializer, add interface">
+      <created>1689417198326</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1689417198326</updated>
+    </task>
+    <task id="LOCAL-00009" summary="code refactor">
+      <created>1689424576214</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1689424576214</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,6 +299,8 @@
     <MESSAGE value="code reformat" />
     <MESSAGE value="add services" />
     <MESSAGE value="add serializer" />
-    <option name="LAST_COMMIT_MESSAGE" value="add serializer" />
+    <MESSAGE value="add serializer, add interface" />
+    <MESSAGE value="code refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="code refactor" />
   </component>
 </project>

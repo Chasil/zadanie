@@ -2,13 +2,11 @@
 
 namespace App\Controller;
 
-use App\Api\OpenMeteo\OpenMeteoApiClient;
-use App\Api\OpenWeather\OpenWeatherApiClient;
-use App\Api\WeatherParametersConverterTrait;
 use App\Exception\AddressFailException;
 use App\Exception\WeatherMissingException;
 use App\Form\TemperatureCalculatorType;
 use App\Service\CoordinateFetcher;
+use App\Service\AverageTemperatureFetcher;
 use App\Service\WeatherSaver;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +19,6 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 class HomepageController extends AbstractController
 {
-    use WeatherParametersConverterTrait;
     /**
      * @throws TransportExceptionInterface
      * @throws ServerExceptionInterface
@@ -32,11 +29,10 @@ class HomepageController extends AbstractController
      */
     #[Route('/', name: 'app_homepage')]
     public function index(
-        Request                         $request,
-        CoordinateFetcher               $coordinateFetcher,
-        WeatherSaver                    $weatherSaver,
-        OpenWeatherApiClient            $openWeatherApiClient,
-        OpenMeteoApiClient              $openMeteoApiClient
+        Request $request,
+        CoordinateFetcher   $coordinateFetcher,
+        WeatherSaver    $weatherSaver,
+        AverageTemperatureFetcher $averageTemperatureFetcher
         ): Response
     {
         $temperatureCalculatorForm = $this->createForm(TemperatureCalculatorType::class);
@@ -49,24 +45,11 @@ class HomepageController extends AbstractController
 
             $coordinates = $coordinateFetcher->get($city, $country);
 
-            $apiClientsList = [
-                $openWeatherApiClient,
-                $openMeteoApiClient
-            ];
-
-            $temperatures = [];
-            foreach ($apiClientsList as $apiClient) {
-                $apiData = $apiClient->fetchAPIInformation($coordinates['latitude'], $coordinates['longitude']);
-                $temperatures[] = $apiData->getTemperature();
-            }
-
-            $averageTemperature = $this->getAverageTemperature(
-                $temperatures
-            );
+            $averageTemperature = $averageTemperatureFetcher->fetch($coordinates['latitude'], $coordinates['longitude']);
 
             $weatherSaver->save($city, $country, $averageTemperature);
 
-            $this->addFlash('notice', 'Average weather to ' . $city .', ' . $country .' is ' . $averageTemperature);
+            $this->addFlash('notice', 'Average weather to ' . $city .', ' . $country .' is ' . $averageTemperature .' °C');
         }
 
         return $this->render('homepage/index.html.twig', [
