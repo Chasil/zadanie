@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Exception\AddressFailException;
 use App\Exception\WeatherMissingException;
 use App\Form\TemperatureCalculatorType;
-use App\Repository\WeatherRepository;
 use App\Service\CoordinateFetcher;
 use App\Service\TemperatureFetcher;
 use App\Service\WeatherSaver;
@@ -51,11 +50,16 @@ class HomepageController extends AbstractController
 
             $cacheKey = strtolower(sprintf('average_temperature_%s_%s', $city, $country));
 
-            $averageTemperature = $cache->get($cacheKey, function(ItemInterface $item) use ($averageTemperatureFetcher, $city, $country) {
+            $averageTemperature = $cache->get($cacheKey,
+                function(ItemInterface $item)
+                use ($coordinateFetcher, $weatherSaver, $averageTemperatureFetcher, $city, $country) {
 
                 $coordinates = $coordinateFetcher->get($city, $country);
 
-                $averageTemperature = $averageTemperatureFetcher->getAverage($coordinates['latitude'], $coordinates['longitude']);
+                $averageTemperature = $averageTemperatureFetcher->getAverage(
+                    $coordinates['latitude'],
+                    $coordinates['longitude']
+                );
                 $weatherSaver->save($city, $country, $averageTemperature);
 
                 $item->expiresAfter(3600);
@@ -63,8 +67,10 @@ class HomepageController extends AbstractController
                 return $averageTemperature;
             });
 
-
-            $this->addFlash('notice', 'Average weather to ' . $city .', ' . $country .' is ' . $averageTemperature .' °C');
+            $this->addFlash(
+                'notice',
+                'Average weather to ' . $city .', ' . $country .' is ' . $averageTemperature .' °C'
+            );
         }
 
         return $this->render('homepage/index.html.twig', [

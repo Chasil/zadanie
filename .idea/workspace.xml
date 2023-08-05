@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d2a5add-df6e-432a-9980-79d68f141ed7" name="Changes" comment="code refactor">
-      <change afterPath="$PROJECT_DIR$/app/src/Service/AverageTemperatureFetcher.php" afterDir="false" />
+    <list default="true" id="1d2a5add-df6e-432a-9980-79d68f141ed7" name="Changes" comment="add caching">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Api/ApiClients.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Api/ApiClient.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Api/OpenMeteo/OpenMeteoApiClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Api/OpenMeteo/OpenMeteoApiClient.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Api/OpenWeather/OpenWeatherApiClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Api/OpenWeather/OpenWeatherApiClient.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Api/OpenWeather/Response/OpenWeatherApiResponseMain.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Api/OpenWeather/Response/OpenWeatherApiResponseMain.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Api/WeatherParametersConverterTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Api/ConvertToCelsiusTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/services.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/Controller/HomepageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Controller/HomepageController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,10 +18,17 @@
     <pharConfigPath>$PROJECT_DIR$/app/composer.json</pharConfigPath>
     <execution />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="SCSS File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="feature/temperatureCalculator" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -163,31 +165,36 @@
     </include_path>
   </component>
   <component name="ProjectId" id="2SSoereLVRPfHOV8Wi5LGKVatSr" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "true",
-    "last_opened_file_path": "C:/Users/Firma/PhpstormProjects/createit/app/public",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Firma/PhpstormProjects/createit/app/public&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mariadb"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mariadb&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Firma\PhpstormProjects\createit\app\public" />
@@ -209,6 +216,7 @@
       <updated>1689149441689</updated>
       <workItem from="1689149442746" duration="13849000" />
       <workItem from="1689229522600" duration="30882000" />
+      <workItem from="1691049736439" duration="16590000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1689151410007</created>
@@ -273,7 +281,49 @@
       <option name="project" value="LOCAL" />
       <updated>1689424576214</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add styling">
+      <created>1689500578329</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1689500578330</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fix naming">
+      <created>1689516685955</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1689516685955</updated>
+    </task>
+    <task id="LOCAL-00012" summary="fix type, add exception">
+      <created>1689517413547</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1689517413547</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fix exception">
+      <created>1689517608913</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1689517608913</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fix naming">
+      <created>1689518692454</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1689518692454</updated>
+    </task>
+    <task id="LOCAL-00015" summary="add caching">
+      <created>1691067086927</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1691067086927</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,6 +342,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="init" />
     <MESSAGE value="add frontend controller, form and database" />
     <MESSAGE value="add frontend scripts, form handling" />
@@ -301,6 +352,11 @@
     <MESSAGE value="add serializer" />
     <MESSAGE value="add serializer, add interface" />
     <MESSAGE value="code refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="code refactor" />
+    <MESSAGE value="add styling" />
+    <MESSAGE value="fix type, add exception" />
+    <MESSAGE value="fix exception" />
+    <MESSAGE value="fix naming" />
+    <MESSAGE value="add caching" />
+    <option name="LAST_COMMIT_MESSAGE" value="add caching" />
   </component>
 </project>
